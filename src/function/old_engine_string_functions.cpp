@@ -226,8 +226,15 @@ type::Value OldEngineStringFunctions::Length(
 }
 
 type::Value OldEngineStringFunctions::Upper(
-    UNUSED_ATTRIBUTE const std::vector<type::Value> &args) {
-  throw Exception{"Upper not implemented in old engine"};
+  const std::vector<type::Value> &args) {
+    if (args[0].IsNull()) {
+      return type::ValueFactory::GetNullValueByType(type::TypeId::VARCHAR);
+    }
+
+    executor::ExecutorContext ctx{nullptr};
+    StringFunctions::StrWithLen ret = StringFunctions::Upper(ctx, args.at(0).GetData(), args[0].GetLength());
+    std::string str(ret.str, ret.length);
+    return type::ValueFactory::GetVarcharValue(str);
 }
 
 type::Value OldEngineStringFunctions::Lower(

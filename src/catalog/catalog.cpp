@@ -1038,6 +1038,12 @@ void Catalog::InitializeFunctions() {
           function::BuiltInFuncType{OperatorId::Like,
                                     function::OldEngineStringFunctions::Like},
           txn);
+      AddBuiltinFunction(
+          "upper", {type::TypeId::VARCHAR},
+          type::TypeId::VARCHAR, internal_lang, "Upper",
+          function::BuiltInFuncType{OperatorId::Upper,
+                                    function::OldEngineStringFunctions::Upper},
+          txn);
 
       /**
        * decimal functions

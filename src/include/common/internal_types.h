@@ -681,8 +681,8 @@ enum class QueryType {
   QUERY_CREATE_INDEX = 5,
   QUERY_DROP = 6,                // other queries
   QUERY_INSERT = 7,               // insert query
-  QUERY_PREPARE = 8,	      // prepare query
-  QUERY_EXECUTE = 9, 	      // execute query
+  QUERY_PREPARE = 8,        // prepare query
+  QUERY_EXECUTE = 9,        // execute query
   QUERY_UPDATE = 10,
   QUERY_DELETE = 11,
   QUERY_RENAME = 12,
@@ -1060,6 +1060,7 @@ enum class OperatorId : uint32_t {
   CharLength,
   OctetLength,
   Length,
+  Upper,
   Repeat,
   Replace,
   LTrim,

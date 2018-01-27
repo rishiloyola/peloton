@@ -220,5 +220,20 @@ uint32_t StringFunctions::Length(
   return length;
 }
 
+StringFunctions::StrWithLen StringFunctions::Upper(
+    UNUSED_ATTRIBUTE executor::ExecutorContext &ctx,
+    const char *str, uint32_t length) {
+  int index = 0;
+  char transformed_str[length];
+  char *ptr = transformed_str;
+  
+  for (; str[index] != '\0'; index++, ptr++) {
+      *ptr = toupper(str[index]);
+  }
+  *ptr = '\0';
+  
+  return StringFunctions::StrWithLen{transformed_str, length};
+}
+
 }  // namespace function
 }  // namespace peloton
